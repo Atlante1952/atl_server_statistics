@@ -1,5 +1,5 @@
 minetest.register_chatcommand("stats", {
-    description = "Affiche les statistiques d'un joueur",
+    description = "Show a player's statistics",
     params = "[player_name]",
     func = function(player_name, param)
         local target_player_name = param
