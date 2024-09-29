@@ -13,10 +13,9 @@ minetest.register_chatcommand("stats", {
         if atl_server_statistics.is_player_online(target_player_name) then
             atl_server_statistics.update_playtime_on_stats(target_player_name)
         end
-        local stats = {"Messages Count", "Deaths Count", "Kills Count", "Nodes Dug", "Nodes Placed", "Items Crafted", "PlayTime"}
         local stats_message = string.format("-!- Statistic of %s <> ", target_player_name)
         local has_stats = false
-        for _, stat in ipairs(stats) do
+        for _, stat in ipairs(atl_server_statistics.statistics) do
             if atl_server_statistics.mod_storage:contains(target_player_name .. "_" .. stat) then
                 local value = atl_server_statistics.get_stat(target_player_name, stat)
                 if value and value > 0 then

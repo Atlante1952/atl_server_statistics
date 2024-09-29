@@ -30,7 +30,7 @@ function atl_server_statistics.log_error(message)
 end
 
 function atl_server_statistics.player_has_stats(player_name)
-    for _, stat in ipairs({"Messages Count", "Deaths Count", "Kills Count", "Nodes Dug", "Nodes Placed", "Items Crafted", "PlayTime"}) do
+    for _, stat in ipairs(atl_server_statistics.statistics) do
         if atl_server_statistics.mod_storage:contains(player_name .. "_" .. stat) then
             return true
         end
