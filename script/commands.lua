@@ -49,6 +49,8 @@ minetest.register_chatcommand("reset", {
                 end
             else
                 minetest.chat_send_player(player_name, minetest.colorize(atl_server_statistics.reset_color_message, "-!- Reset request has expired. Please try again."))
+                atl_server_statistics.reset_requests[player_name] = current_time
+                minetest.chat_send_player(player_name, minetest.colorize(atl_server_statistics.reset_color_message, "-!- To confirm the reset of your statistics, type /reset again within the next 30 seconds."))
             end
         else
             atl_server_statistics.reset_requests[player_name] = current_time
