@@ -1,0 +1,7 @@
+# textdomain:atl_server_statistics
+
+-!- Reset request has expired.=-!- Запрос на сброс истек.
+-!- Your statistics have been reset.=-!- Ваши статистические данные были сброшены.
+-!- No statistics available for =-!- Нет доступной статистики для
+-!- To confirm the reset of your statistics, type /yes_reset within the next 30 seconds.=-!- Чтобы подтвердить сброс ваших статистических данных, введите /yes_reset в течение следующих 30 секунд.
+-!- Reset request has expired or does not exist.=-!- Запрос на сброс истек или не существует.

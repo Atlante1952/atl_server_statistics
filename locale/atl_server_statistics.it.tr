@@ -1,0 +1,7 @@
+# textdomain:atl_server_statistics
+
+-!- Reset request has expired.=-!- La richiesta di reset è scaduta.
+-!- Your statistics have been reset.=-!- Le tue statistiche sono state reimpostate.
+-!- No statistics available for =-!- Nessuna statistica disponibile per 
+-!- To confirm the reset of your statistics, type /yes_reset within the next 30 seconds.=-!- Per confermare il ripristino delle tue statistiche, digita /yes_reset entro i prossimi 30 secondi.
+-!- Reset request has expired or does not exist.=-!- La richiesta di reset è scaduta o non esiste.

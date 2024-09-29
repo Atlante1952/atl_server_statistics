@@ -16,12 +16,9 @@ end
 
 if atl_server_statistics.modpath then
     local files_to_load = {
-        --=== <Api> ===--
         "script/api.lua",
-        --=== <Events> ===--
         "script/simple_events.lua",
         "script/playtimes.lua",
-        --=== <Commands> ===--
         "script/commands.lua",
         "script/reset.lua",
     }
