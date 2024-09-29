@@ -1,12 +1,8 @@
 minetest.register_on_dieplayer(function(player, reason)
-    if player then
-        local player_name = atl_server_statistics.get_player_name(player)
-        atl_server_statistics.increment_event_stat(player_name, "Deaths Count", 1)
-        if reason.type == "punch" and reason.object and reason.object:is_player() then
-            atl_server_statistics.increment_event_stat(atl_server_statistics.get_player_name(reason.object), "Kills Count", 1)
-        end
-    else
-        atl_server_statistics.log_error("Player is nil in on_dieplayer callback")
+    local player_name = atl_server_statistics.get_player_name(player)
+    atl_server_statistics.increment_event_stat(player_name, "Deaths Count", 1)
+    if reason.type == "punch" and reason.object and reason.object:is_player() then
+        atl_server_statistics.increment_event_stat(atl_server_statistics.get_player_name(reason.object), "Kills Count", 1)
     end
 end)
 
@@ -28,6 +24,14 @@ end)
 
 function atl_server_statistics.on_player_leave(player)
     atl_server_statistics.update_playtime_on_stats(atl_server_statistics.get_player_name(player))
+end
+
+function atl_server_statistics.on_player_join(player)
+    local player_name = atl_server_statistics.get_player_name(player)
+    atl_server_statistics.mod_storage:set_int(player_name .. "_connect_time", os.time())
+    for _, stat in ipairs(atl_server_statistics.statistics) do
+        atl_server_statistics.mod_storage:set_int(player_name .. "_" .. stat, atl_server_statistics.mod_storage:contains(player_name .. "_" .. stat) and get_value(player_name, stat) or 0)
+    end
 end
 
 function atl_server_statistics.on_shutdown()

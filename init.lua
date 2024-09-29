@@ -8,7 +8,6 @@ atl_server_statistics = {
     reset_requests = {}
 }
 
-
 function atl_server_statistics.load_file(path)
     local status, err = pcall(dofile, path)
     if not status then
@@ -21,8 +20,7 @@ end
 if atl_server_statistics.modpath then
     local files_to_load = {
         "script/api.lua",
-        "script/events.lua",
-        "script/commands.lua",
+
     }
     for _, file in ipairs(files_to_load) do
         atl_server_statistics.load_file(atl_server_statistics.modpath .. "/" .. file)
