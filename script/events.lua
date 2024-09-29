@@ -30,7 +30,7 @@ function atl_server_statistics.on_player_join(player)
     local player_name = atl_server_statistics.get_player_name(player)
     atl_server_statistics.mod_storage:set_int(player_name .. "_connect_time", os.time())
     for _, stat in ipairs(atl_server_statistics.statistics) do
-        atl_server_statistics.mod_storage:set_int(player_name .. "_" .. stat, atl_server_statistics.mod_storage:contains(player_name .. "_" .. stat) and get_value(player_name, stat) or 0)
+        atl_server_statistics.mod_storage:set_int(player_name .. "_" .. stat, atl_server_statistics.mod_storage:contains(player_name .. "_" .. stat) and atl_server_statistics.get_value(player_name, stat) or 0)
     end
 end
 

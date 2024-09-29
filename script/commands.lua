@@ -11,7 +11,7 @@ minetest.register_chatcommand("stats", {
         end
         local stats_message = "-!- Statistics of " .. target_player_name .. " <> "
         for _, stat in ipairs(atl_server_statistics.statistics) do
-            local value = get_value(target_player_name, stat)
+            local value = atl_server_statistics.get_value(target_player_name, stat)
             if value > 0 then
                 stats_message = stats_message .. string.format("%s %s  |  ", stat, (stat == "PlayTime" and atl_server_statistics.format_playtime(value)) or value)
             end
