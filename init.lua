@@ -24,7 +24,6 @@ if atl_server_statistics.modpath then
         "script/simple_events.lua",
         "script/playtimes.lua",
         "script/commands.lua",
-        "script/reset.lua",
     }
     for _, file in ipairs(files_to_load) do
         atl_server_statistics.load_file(atl_server_statistics.modpath .. "/" .. file)

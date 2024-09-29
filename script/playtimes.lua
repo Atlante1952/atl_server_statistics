@@ -15,7 +15,7 @@ function atl_server_statistics.update_playtime_on_stats(player_name)
     local connect_time = atl_server_statistics.mod_storage:get_int(player_name .. "_connect_time")
     local current_time = os.time()
     local time_diff = current_time - connect_time
-    atl_server_statistics.increment_stat(player_name, "PlayTime", time_diff)
+    atl_server_statistics.increment_value(player_name, "PlayTime", time_diff)
     atl_server_statistics.mod_storage:set_int(player_name .. "_connect_time", current_time)
 end
 

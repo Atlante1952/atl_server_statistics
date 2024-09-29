@@ -7,31 +7,24 @@ minetest.register_chatcommand("stats", {
             target_player_name = player_name
         end
         if not atl_server_statistics.player_has_stats(target_player_name) then
-            minetest.chat_send_player(player_name, minetest.colorize(atl_server_statistics.color_message, "-!- No statistics available for " .. target_player_name))
-            return
+            return false, minetest.colorize(atl_server_statistics.color_message, "-!- No statistics available for " .. target_player_name)
         end
         if atl_server_statistics.is_player_online(target_player_name) then
             atl_server_statistics.update_playtime_on_stats(target_player_name)
         end
         local stats_message = string.format("-!- Statistic of %s <> ", target_player_name)
-        local has_stats = false
         for _, stat in ipairs(atl_server_statistics.statistics) do
             if atl_server_statistics.mod_storage:contains(target_player_name .. "_" .. stat) then
-                local value = atl_server_statistics.get_stat(target_player_name, stat)
-                if value and value > 0 then
+                local value = atl_server_statistics.get_value(target_player_name, stat)
+                if value > 0 then
                     if stat == "PlayTime" then
                         value = atl_server_statistics.format_playtime(value)
                     end
                     stats_message = stats_message .. string.format("%s %s  |  ", stat, value)
-                    has_stats = true
                 end
             end
         end
-        if has_stats then
-            minetest.chat_send_player(player_name, minetest.colorize(atl_server_statistics.color_message, stats_message))
-        else
-            minetest.chat_send_player(player_name, minetest.colorize(atl_server_statistics.color_message, "-!- No statistics available for " .. target_player_name))
-        end
+        return true, minetest.colorize(atl_server_statistics.color_message, stats_message)
     end,
 })
 
@@ -47,14 +40,14 @@ minetest.register_chatcommand("reset", {
                 if atl_server_statistics.is_player_online(player_name) then
                     atl_server_statistics.update_playtime_on_stats(player_name)
                 end
+                return true, minetest.colorize(atl_server_statistics.reset_color_message, "-!- Your statistics have been reset.")
             else
-                minetest.chat_send_player(player_name, minetest.colorize(atl_server_statistics.reset_color_message, "-!- Reset request has expired. Please try again."))
-                atl_server_statistics.reset_requests[player_name] = current_time
-                minetest.chat_send_player(player_name, minetest.colorize(atl_server_statistics.reset_color_message, "-!- To confirm the reset of your statistics, type /reset again within the next 30 seconds."))
+                atl_server_statistics.reset_requests[player_name] = nil
+                return false, minetest.colorize(atl_server_statistics.reset_color_message, "-!- Reset request has expired. Please try again.")
             end
-        else
-            atl_server_statistics.reset_requests[player_name] = current_time
-            minetest.chat_send_player(player_name, minetest.colorize(atl_server_statistics.reset_color_message, "-!- To confirm the reset of your statistics, type /reset again within the next 30 seconds."))
         end
+
+        atl_server_statistics.reset_requests[player_name] = current_time
+        return true, minetest.colorize(atl_server_statistics.reset_color_message, "-!- To confirm the reset of your statistics, type /reset again within the next 30 seconds.")
     end,
 })

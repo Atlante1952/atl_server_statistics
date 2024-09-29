@@ -1,55 +1,29 @@
 minetest.register_on_dieplayer(function(player, reason)
-    if player then
-        local player_name = player:get_player_name()
-        atl_server_statistics.increment_event_stat(player_name, "Deaths Count", 1)
-        if reason.type == "punch" then
-            if reason.object and reason.object:is_player() then
-                local killer_name = reason.object:get_player_name()
-                atl_server_statistics.increment_event_stat(killer_name, "Kills Count", 1)
-            end
-        end
-    else
-        atl_server_statistics.log_error("Player is nil in on_dieplayer callback")
+    local player_name = player:get_player_name()
+    atl_server_statistics.increment_value(player_name, "Deaths Count", 1)
+    if reason.type == "punch" and reason.object and reason.object:is_player() then
+        local killer_name = reason.object:get_player_name()
+        atl_server_statistics.increment_value(killer_name, "Kills Count", 1)
     end
 end)
 
-minetest.register_on_craft(function(itemstack, player, old_craft_grid, craft_inv)
-    if player then
-        local amount = itemstack:get_count()
-        atl_server_statistics.increment_event_stat(player:get_player_name(), "Items Crafted", amount)
-    else
-        atl_server_statistics.log_error("Player is nil in on_craft callback")
-    end
+minetest.register_on_craft(function(itemstack, player)
+    local amount = itemstack:get_count()
+    atl_server_statistics.increment_value(player:get_player_name(), "Items Crafted", amount)
 end)
 
-minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
-    if placer then
-        atl_server_statistics.increment_event_stat(placer:get_player_name(), "Nodes Placed", 1)
-    else
-        atl_server_statistics.log_error("Placer is nil in on_placenode callback")
-    end
+minetest.register_on_placenode(function(_, _, placer)
+    atl_server_statistics.increment_value(placer:get_player_name(), "Nodes Placed", 1)
 end)
 
-minetest.register_on_dignode(function(pos, oldnode, digger)
-    if digger then
-        atl_server_statistics.increment_event_stat(digger:get_player_name(), "Nodes Dug", 1)
-    else
-        atl_server_statistics.log_error("Digger is nil in on_dignode callback")
-    end
+minetest.register_on_dignode(function(_, _, digger)
+    atl_server_statistics.increment_value(digger:get_player_name(), "Nodes Dug", 1)
 end)
 
-minetest.register_on_chat_message(function(player_name, message)
-    atl_server_statistics.increment_event_stat(player_name, "Messages Count", 1)
+minetest.register_on_chat_message(function(player_name)
+    atl_server_statistics.increment_value(player_name, "Messages Count", 1)
 end)
 
-minetest.register_on_joinplayer(function(player)
-    atl_server_statistics.on_player_join(player)
-end)
-
-minetest.register_on_shutdown(function()
-    atl_server_statistics.on_shutdown()
-end)
-
-minetest.register_on_leaveplayer(function(player)
-    atl_server_statistics.on_player_leave(player)
-end)
+minetest.register_on_joinplayer(function(player) atl_server_statistics.on_player_join(player) end)
+minetest.register_on_shutdown(function() atl_server_statistics.on_shutdown() end)
+minetest.register_on_leaveplayer(function(player) atl_server_statistics.on_player_leave(player) end)
