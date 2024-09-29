@@ -1,0 +1,6 @@
+# textdomain:atl_server_news
+
+-!- Player does not exist=
+-!- You don't have permission to open this (missing privileges: server)=
+-!- Server news updated successfully.=
+-!- There are new features on the server! Type /news to read them.=

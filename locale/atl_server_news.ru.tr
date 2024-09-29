@@ -1,0 +1,6 @@
+# textdomain:atl_server_news
+
+-!- Player does not exist=-!- Игрок не существует.
+-!- You don't have permission to open this (missing privileges: server)=-!- У вас нет разрешения на открытие этого (отсутствующие привилегии: сервер).
+-!- Server news updated successfully.=-!- Новости сервера успешно обновлены.
+-!- There are new features on the server! Type /news to read them.=-!- На сервере появились новые функции! Введите /news, чтобы прочитать их.
