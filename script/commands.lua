@@ -1,5 +1,5 @@
 minetest.register_chatcommand("stats", {
-    description = "Show a player's statistics",
+    description = "Allows you to display your current statistics or those of a target player",
     params = "<player_name>",
     func = function(player_name, param)
         local target_player_name = param ~= "" and param or player_name
@@ -21,7 +21,7 @@ minetest.register_chatcommand("stats", {
 })
 
 minetest.register_chatcommand("reset", {
-    description = "Reset Your Stats",
+    description = "Allows you to reset your statistics with confirmation",
     func = function(player_name)
         local current_time = os.time()
         if atl_server_statistics.reset_requests[player_name] then
