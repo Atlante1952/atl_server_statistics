@@ -1,12 +1,12 @@
-atl_server_statistics = {}
-atl_server_statistics.mod_storage = minetest.get_mod_storage()
-atl_server_statistics.modpath = minetest.get_modpath("atl_server_statistics")
-atl_server_statistics.statistics = {"Messages Count", "Deaths Count", "Kills Count", "Nodes Dug", "Nodes Placed", "Items Crafted", "PlayTime"}
-
-atl_server_statistics.color_message = "#bce712"
-atl_server_statistics.reset_color_message = "#bce712"
-atl_server_statistics.time_before_end_request = 30
-atl_server_statistics.reset_requests = {}
+atl_server_statistics = {
+    mod_storage = minetest.get_mod_storage(),
+    modpath = minetest.get_modpath("atl_server_statistics"),
+    statistics = {"Messages Count", "Deaths Count", "Kills Count", "Nodes Dug", "Nodes Placed", "Items Crafted", "PlayTime"},
+    color_message = "#bce712",
+    reset_color_message = "#bce712",
+    time_before_end_request = 30,
+    reset_requests = {}
+}
 
 
 function atl_server_statistics.load_file(path)
@@ -21,10 +21,8 @@ end
 if atl_server_statistics.modpath then
     local files_to_load = {
         "script/api.lua",
-        "script/simple_events.lua",
-        "script/playtimes.lua",
+        "script/events.lua",
         "script/commands.lua",
-        "script/reset.lua",
     }
     for _, file in ipairs(files_to_load) do
         atl_server_statistics.load_file(atl_server_statistics.modpath .. "/" .. file)
