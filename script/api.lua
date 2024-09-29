@@ -80,3 +80,13 @@ function atl_server_statistics.update_playtime_on_stats(player_name)
     atl_server_statistics.increment_value(player_name, "PlayTime", time_diff)
     atl_server_statistics.mod_storage:set_int(player_name .. "_connect_time", current_time)
 end
+
+function atl_server_statistics.on_player_join(player)
+    local player_name = atl_server_statistics.get_player_name(player)
+    atl_server_statistics.mod_storage:set_int(player_name .. "_connect_time", os.time())
+    for _, stat in ipairs(atl_server_statistics.statistics) do
+        if not atl_server_statistics.mod_storage:contains(player_name .. "_" .. stat) then
+            atl_server_statistics.mod_storage:set_int(player_name .. "_" .. stat, 0)
+        end
+    end
+end
