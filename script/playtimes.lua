@@ -19,18 +19,10 @@ function atl_server_statistics.update_playtime_on_stats(player_name)
     atl_server_statistics.mod_storage:set_int(player_name .. "_connect_time", current_time)
 end
 
-minetest.register_on_joinplayer(function(player)
-    atl_server_statistics.on_player_join(player)
-end)
-
 function atl_server_statistics.on_player_leave(player)
     local player_name = player:get_player_name()
     atl_server_statistics.update_playtime_on_stats(player_name)
 end
-
-minetest.register_on_leaveplayer(function(player)
-    atl_server_statistics.on_player_leave(player)
-end)
 
 function atl_server_statistics.on_shutdown()
     for _, player in ipairs(minetest.get_connected_players()) do
@@ -38,7 +30,3 @@ function atl_server_statistics.on_shutdown()
         atl_server_statistics.update_playtime_on_stats(player_name)
     end
 end
-
-minetest.register_on_shutdown(function()
-    atl_server_statistics.on_shutdown()
-end)

@@ -41,3 +41,15 @@ end)
 minetest.register_on_chat_message(function(player_name, message)
     atl_server_statistics.increment_event_stat(player_name, "Messages Count", 1)
 end)
+
+minetest.register_on_joinplayer(function(player)
+    atl_server_statistics.on_player_join(player)
+end)
+
+minetest.register_on_shutdown(function()
+    atl_server_statistics.on_shutdown()
+end)
+
+minetest.register_on_leaveplayer(function(player)
+    atl_server_statistics.on_player_leave(player)
+end)

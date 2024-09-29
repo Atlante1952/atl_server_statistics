@@ -1,12 +1,19 @@
 function atl_server_statistics.get_value(player_name, key)
+    if type(player_name) == "userdata" then
+        player_name = player_name:get_player_name()
+    end
     local value = atl_server_statistics.mod_storage:get_int(player_name .. "_" .. key)
     return value
 end
 
 function atl_server_statistics.increment_value(player_name, key, amount)
-    local value = atl_server_statistics.get_value(player_name, key) or 0
-    value = value + amount
-    atl_server_statistics.mod_storage:set_int(player_name .. "_" .. key, value)
+    if type(player_name) == "userdata" then
+        player_name = player_name:get_player_name()
+    end
+    local current_value = atl_server_statistics.get_value(player_name, key)
+    local new_value = current_value + amount
+    atl_server_statistics.mod_storage:set_int(player_name .. "_" .. key, new_value)
+    return new_value
 end
 
 function atl_server_statistics.get_stat(player_name, key)
