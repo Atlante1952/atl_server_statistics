@@ -25,7 +25,7 @@ function atl_server_statistics.generate_stats_table(stats_name, player_name)
             player_rank = i
             player_stat_in_list = player_stat
         end
-        if i <= 5 then
+        if i <= 10 then
             local row_color = i == 1 and "#363d4b" or "#434c5e"
             local formatted_value
 
@@ -36,10 +36,10 @@ function atl_server_statistics.generate_stats_table(stats_name, player_name)
             end
 
             result_lines = result_lines ..
-                "box[0," .. (i - 0.15) .. ";5.75,0.8;" .. row_color .. "]" ..
-                "label[0.5," .. (i) .. ";" .. i .. "]" ..
-                "label[2," .. (i) .. ";" .. player_stat.name .. "]" ..
-                "label[4.65," .. (i) .. ";" .. formatted_value .. "]"
+                "box[0," .. (i - 0.1) * 0.65 .. ";5.75,0.5;" .. row_color .. "]" ..
+                "label[0.5," .. (i - 0.08) * 0.65 .. ";" .. i .. "]" ..
+                "label[2," .. (i - 0.08) * 0.65 .. ";" .. player_stat.name .. "]" ..
+                "label[4.65," .. (i - 0.08) * 0.65 .. ";" .. formatted_value .. "]"
         end
     end
 
@@ -54,10 +54,10 @@ function atl_server_statistics.generate_stats_table(stats_name, player_name)
         end
 
         result_lines = result_lines ..
-            "box[0,7.1;5.75,0.8;" .. row_color .. "]" ..
-            "label[0.5,7.25;" .. player_rank .. "]" ..
-            "label[2,7.25;" .. player_stat_in_list.name .. "]" ..
-            "label[4.65,7.25;" .. formatted_value .. "]"
+            "box[0,7.75;5.75,0.5;" .. row_color .. "]" ..
+            "label[0.5,7.75;" .. player_rank .. "]" ..
+            "label[2,7.75;" .. player_stat_in_list.name .. "]" ..
+            "label[4.65,7.75;" .. formatted_value .. "]"
     end
     return result_lines
 end
@@ -68,9 +68,9 @@ function atl_server_statistics.create_base_formspec(stats_list, selected_tab, pl
                      "label[0.25,0;Rank]" ..
                      "label[2,0;Player Name]" ..
                      "label[4.5,0;Stats]" ..
-                     "label[0,6.5;Your Rank]" ..
-                     "label[1.75,6.5;Your Player Name]" ..
-                     "label[4.25,6.5;Your Stats]"
+                     "label[0,7.25;Your Rank]" ..
+                     "label[1.75,7.25;Your Player Name]" ..
+                     "label[4.25,7.25;Your Stats]"
     return formspec
 end
 
