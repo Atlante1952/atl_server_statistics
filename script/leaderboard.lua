@@ -37,9 +37,11 @@ function atl_server_statistics.generate_stats_table(stats_name, player_name)
 
             result_lines = result_lines ..
                 "box[0," .. (i - 0.1) * 0.65 .. ";5.75,0.5;" .. row_color .. "]" ..
-                "label[0.5," .. (i - 0.08) * 0.65 .. ";" .. i .. "]" ..
-                "label[2," .. (i - 0.08) * 0.65 .. ";" .. player_stat.name .. "]" ..
-                "label[4.65," .. (i - 0.08) * 0.65 .. ";" .. formatted_value .. "]"
+                "box[4.25," .. (i - 0.1) * 0.65 .. ";1.5,0.5;#6dafb7]" ..
+                "box[0," .. (i - 0.1) * 0.65 .. ";0.55,0.5;#4a606c]" ..
+                "label[0.225," .. (i - 0.08) * 0.65 .. ";" .. i .. "]" ..
+                "label[1.75," .. (i - 0.08) * 0.65 .. ";" .. player_stat.name .. "]" ..
+                "label[4.45," .. (i - 0.08) * 0.65 .. ";" .. formatted_value .. "]"
         end
     end
 
@@ -54,10 +56,12 @@ function atl_server_statistics.generate_stats_table(stats_name, player_name)
         end
 
         result_lines = result_lines ..
-            "box[0,7.75;5.75,0.5;" .. row_color .. "]" ..
-            "label[0.5,7.75;" .. player_rank .. "]" ..
-            "label[2,7.75;" .. player_stat_in_list.name .. "]" ..
-            "label[4.65,7.75;" .. formatted_value .. "]"
+            "box[4.25,7.75;1.5,0.5;#6dafb7]" ..
+            "box[0,7.75;0.55,0.5;#4a606c]" ..
+            "box[0,7.75;4.25,0.5;" .. row_color .. "]" ..
+            "label[0.225,7.75;" .. player_rank .. "]" ..
+            "label[1.75,7.75;" .. player_stat_in_list.name .. "]" ..
+            "label[4.45,7.75;" .. formatted_value .. "]"
     end
     return result_lines
 end
@@ -66,10 +70,10 @@ function atl_server_statistics.create_base_formspec(stats_list, selected_tab, pl
     local formspec = "size[6,8]" ..
                      "tabheader[0,0;tabs;Messages, Deaths, Kills, Mined, Placed, Craft, Playtime;" .. selected_tab .. ";true;false]" ..
                      "label[0.25,0;Rank]" ..
-                     "label[2,0;Player Name]" ..
+                     "label[1.75,0;Player Name]" ..
                      "label[4.5,0;Stats]" ..
                      "label[0,7.25;Your Rank]" ..
-                     "label[1.75,7.25;Your Player Name]" ..
+                     "label[1.5,7.25;Your Player Name]" ..
                      "label[4.25,7.25;Your Stats]"
     return formspec
 end
