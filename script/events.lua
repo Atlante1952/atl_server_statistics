@@ -46,8 +46,8 @@ minetest.register_on_leaveplayer(atl_server_statistics.on_player_leave)
 
 minetest.register_on_player_receive_fields(function(player, formname, fields)
     local name = player:get_player_name()
-    if fields.tabs then
-        local selected_tab = tonumber(fields.tabs)
+    if fields.leaderboard_tabs then
+        local selected_tab = tonumber(fields.leaderboard_tabs)
         local stats_list = atl_server_statistics.statistics
         local selected_stat = stats_list[selected_tab]
 

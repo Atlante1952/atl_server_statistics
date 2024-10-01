@@ -57,7 +57,7 @@ function atl_server_statistics.generate_stats_table(stats_name, player_name)
 
         result_lines = result_lines ..
             "box[4.25,7.75;1.5,0.5;#6dafb7]" ..
-            "box[0,7.75;0.55,0.5;#4a606c]" ..
+            "box[0,7.75;0.75,0.5;#4a606c]" ..
             "box[0,7.75;4.25,0.5;" .. row_color .. "]" ..
             "label[0.225,7.75;" .. player_rank .. "]" ..
             "label[1.75,7.75;" .. player_stat_in_list.name .. "]" ..
@@ -68,7 +68,7 @@ end
 
 function atl_server_statistics.create_base_formspec(stats_list, selected_tab, player_name)
     local formspec = "size[6,8]" ..
-                     "tabheader[0,0;tabs;Messages, Deaths, Kills, Mined, Placed, Craft, Playtime;" .. selected_tab .. ";true;false]" ..
+                     "tabheader[0,0;leaderboard_tabs;Messages, Deaths, Kills, Mined, Placed, Craft, Playtime;" .. selected_tab .. ";true;false]" ..
                      "label[0.25,0;Rank]" ..
                      "label[1.75,0;Player Name]" ..
                      "label[4.5,0;Stats]" ..
