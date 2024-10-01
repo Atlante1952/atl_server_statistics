@@ -22,6 +22,8 @@ minetest.register_chatcommand("stats", {
     end,
 })
 
+minetest.register_chatcommand("s", minetest.registered_chatcommands["stats"])
+
 minetest.register_chatcommand("reset", {
     description = "Allows you to reset your statistics with confirmation",
     func = function(player_name)
@@ -51,3 +53,5 @@ minetest.register_chatcommand("leaderboard", {
         end
     end,
 })
+
+minetest.register_chatcommand("ld", minetest.registered_chatcommands["leaderboard"])
