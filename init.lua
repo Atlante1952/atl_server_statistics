@@ -2,7 +2,7 @@ atl_server_statistics = {
     mod_storage = minetest.get_mod_storage(),
     modpath = minetest.get_modpath("atl_server_statistics"),
     statistics = {"Messages Count", "Deaths Count", "Kills Count", "Nodes Dug", "Nodes Placed", "Items Crafted", "PlayTime"},
-    color_message = "",
+    color_message = "#ced5e3",
     reset_color_message = "#bce712",
     time_before_end_request = 30,
     reset_requests = {}
@@ -19,10 +19,11 @@ end
 
 if atl_server_statistics.modpath then
     local files_to_load = {
-        "script/api.lua",
-        "script/events.lua",
-        "script/commands.lua",
-        "script/leaderboard.lua",
+        "script/storage.lua",
+        "script/event.lua",
+        "script/command.lua",
+        "script/util.lua",
+        "script/formspec.lua",
     }
     for _, file in ipairs(files_to_load) do
         atl_server_statistics.load_file(atl_server_statistics.modpath .. "/" .. file)
