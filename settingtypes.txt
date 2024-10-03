@@ -1,0 +1,8 @@
+atl_server_statistics.disable_kill_count_and_death_count (Disables counting of deaths and murders) bool false
+atl_server_statistics.register_on_craft (Disables item crafting counting) bool false
+atl_server_statistics.register_on_placenode (Disables block placement counting) bool false
+atl_server_statistics.register_on_dignode (Disables block breaking counting) bool false
+atl_server_statistics.register_on_chat_message (Disables counting of sent messages) bool false
+atl_server_statistics.simplified_command (Disables command abbreviations) bool false
+
+atl_server_statistics.time_before_end_reset_request (Farming Stage Length) float 30

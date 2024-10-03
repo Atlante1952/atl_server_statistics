@@ -2,11 +2,14 @@ atl_server_statistics = {
     mod_storage = minetest.get_mod_storage(),
     modpath = minetest.get_modpath("atl_server_statistics"),
     statistics = {"Messages Count", "Deaths Count", "Kills Count", "Nodes Dug", "Nodes Placed", "Items Crafted", "PlayTime"},
-    color_message = "#ced5e3",
+    color_message = "",
     reset_color_message = "#bce712",
     time_before_end_request = 30,
     reset_requests = {}
 }
+
+
+
 
 function atl_server_statistics.load_file(path)
     local status, err = pcall(dofile, path)

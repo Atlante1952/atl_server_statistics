@@ -2,7 +2,6 @@ function atl_server_statistics.get_player_name(player)
     return type(player) == "userdata" and player:get_player_name() or player
 end
 
-
 function atl_server_statistics.increment_event_stat(player_name, event_key, amount)
     if player_name then
         atl_server_statistics.increment_value(player_name, event_key, amount)

@@ -22,8 +22,6 @@ minetest.register_chatcommand("stats", {
     end,
 })
 
-minetest.register_chatcommand("s", minetest.registered_chatcommands["stats"])
-
 minetest.register_chatcommand("reset", {
     description = S("Allows you to reset your statistics with confirmation"),
     func = function(player_name)
@@ -59,4 +57,7 @@ minetest.register_chatcommand("leaderboard", {
     end,
 })
 
+if minetest.settings:get_bool("atl_server_statistics.simplified_command") ~= true then
+minetest.register_chatcommand("s", minetest.registered_chatcommands["stats"])
 minetest.register_chatcommand("ld", minetest.registered_chatcommands["leaderboard"])
+end
