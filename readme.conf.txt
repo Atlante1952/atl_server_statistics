@@ -1,9 +1,9 @@
 
-Players Statistics for Minetest
+Players Statistics for Luanti(ex Minetest)
 
 Displays player statistics in a ranked format, with metrics such as playtime, kills, messages, and more.
 
-Statistics Plus for Minetest is a complete mod designed to track and display various player statistics in a competitive leaderboard format. This mod provides a detailed view of player performance, including:
+Statistics Plus for Luanti is a complete mod designed to track and display various player statistics in a competitive leaderboard format. This mod provides a detailed view of player performance, including:
 
     Number of messages sent
     Kills
