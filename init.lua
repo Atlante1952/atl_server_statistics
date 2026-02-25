@@ -1,6 +1,6 @@
 atl_server_statistics = {
-    mod_storage = minetest.get_mod_storage(),
-    modpath = minetest.get_modpath("atl_server_statistics"),
+    mod_storage = core.get_mod_storage(),
+    modpath = core.get_modpath("atl_server_statistics"),
     statistics = {"Messages Count", "Deaths Count", "Kills Count", "Nodes Dug", "Nodes Placed", "Items Crafted", "PlayTime"},
     color_message = "",
     reset_color_message = "#bce712",
@@ -14,9 +14,9 @@ atl_server_statistics = {
 function atl_server_statistics.load_file(path)
     local status, err = pcall(dofile, path)
     if not status then
-        minetest.log("error", "-!- Failed to load file: " .. path .. " - Error: " .. err)
+        core.log("error", "-!- Failed to load file: " .. path .. " - Error: " .. err)
     else
-        minetest.log("action", "-!- Successfully loaded file: " .. path)
+        core.log("action", "-!- Successfully loaded file: " .. path)
     end
 end
 
@@ -32,5 +32,5 @@ if atl_server_statistics.modpath then
         atl_server_statistics.load_file(atl_server_statistics.modpath .. "/" .. file)
     end
 else
-    minetest.log("error", "-!- Files in " .. atl_server_statistics.modpath .. " mod are not set or valid.")
+    core.log("error", "-!- Files in " .. atl_server_statistics.modpath .. " mod are not set or valid.")
 end
